@@ -47,12 +47,10 @@ def get_longest_all_palindromes(lst):
 
 
 
-def test_is_palindrome():
-    assert is_palindrome(123) == False
-    assert is_palindrome(1) == True
-    assert is_palindrome(12321) == True
-    assert is_palindrome(1331) == True
-    assert is_palindrome(87) == False
+def test_get_longest_all_palindromes():
+    assert get_longest_all_palindromes([121,35, 676, 181,]) == [676, 181]
+    assert get_longest_all_palindromes([1, 56, 898, 101, 2]) == [898, 101, 2]
+    assert get_longest_all_palindromes([56, 12, 22, 909]) == [22, 909]
 
 
 def nr_div(n):
@@ -85,11 +83,10 @@ def get_longest_same_div_count(lst):
                     result = lst[i:j+1]
     return result
 
-def test_nr_div():
-    assert nr_div(9) == 3
-    assert nr_div(12) == 6
-    assert nr_div(2) == 2
-    assert nr_div(45) ==  6
+def test_get_longest_same_div_count():
+    assert get_longest_same_div_count([12, 45, 7, 8]) == [12, 45]
+    assert get_longest_same_div_count([6, 8, 10, 3, 13]) == [6, 8, 10]
+    assert get_longest_same_div_count([14, 8, 7, 99]) == [14, 8]
 
 
 def get_longest_all_even(lst):
@@ -106,6 +103,11 @@ def get_longest_all_even(lst):
                 if j-i+1 >len(result):
                     result = lst[i:j+1]
     return result
+
+def test_get_longest_all_even():
+    assert get_longest_all_even([2,4, 7, 9 ,13])== [2,4]
+    assert get_longest_all_even([11, 12, 16, 8, 10])==[12, 16, 8, 10]
+    assert get_longest_all_even([2, 7, 59, 13, 19]) == [2]
 
 
 def main():
@@ -128,7 +130,8 @@ def main():
             print("Optiunea invalida")
 
 if __name__ == '__main__':
-    test_is_palindrome()
-    test_nr_div()
+    test_get_longest_all_palindromes()
+    test_get_longest_same_div_count()
+    test_get_longest_all_even()
     main ()
 
