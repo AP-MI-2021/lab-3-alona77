@@ -2,7 +2,8 @@ def show_menu():
     print("1. Citire lista")
     print("2. Det cea mai lunga secv cu prop ca sunt palindroame")
     print("3. Det cea mai lunga subsecv cu prop ca au acelasi nr de div")
-    print("4. Exit")
+    print("4. Det cea mai lunga subsecv cu propr ca toate sunt pare")
+    print("5. Exit")
 
 def read_list():
     lst = []
@@ -84,6 +85,29 @@ def get_longest_same_div_count(lst):
                     result = lst[i:j+1]
     return result
 
+def test_nr_div():
+    assert nr_div(9) == 3
+    assert nr_div(12) == 6
+    assert nr_div(2) == 2
+    assert nr_div(45) ==  6
+
+
+def get_longest_all_even(lst):
+    l = len(lst)
+    result = []
+    for i in range (l):
+        for j in range (i,l):
+            all_even = True
+            for num in lst[i:j+1]:
+                if num % 2 != 0:
+                    all_even = False
+                    break
+            if all_even:
+                if j-i+1 >len(result):
+                    result = lst[i:j+1]
+    return result
+
+
 def main():
     lst=[]
     while True:
@@ -97,10 +121,14 @@ def main():
             divizor= get_longest_same_div_count(lst)
             print("Cea mai lunga subsec de nr cu acelasi nr de div este  ", divizor)
         elif opt == 4:
+            print("cea mai lunga subsecv de nr pare este", get_longest_all_even(lst))
+        elif opt == 5:
             break
         else:
             print("Optiunea invalida")
 
 if __name__ == '__main__':
+    test_is_palindrome()
+    test_nr_div()
     main ()
 
